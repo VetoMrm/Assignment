@@ -1,0 +1,14 @@
+<mat-icon matSuffix style="float: right; cursor: pointer;" (click)='close()'>clear</mat-icon>
+<h5 class="text-center">- Question List -</h5>
+<div mat-dialog-content class="mt-5">
+    <div class="container-fluid shadow shadow-rounded pt-2" *ngFor='let queslist of printObj'>
+        <div class="row">
+            <div class="col-md-2 pb-2 pt-2">
+                <img src="../../../../../assets/img/diamon.png" class="img-fluid cardImg">
+            </div>
+            <div class="col-md-10 pb-2 pt-2">
+                <p>{{ queslist.value }}</p>
+            </div>
+        </div>
+    </div>
+</div>

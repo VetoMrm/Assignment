@@ -1,0 +1,223 @@
+<div class="container-fluid">
+    <form>
+        <div class="row d-flex justify-content-around mx-auto pt-4">
+            <div class="col-lg-1 col-md-1 col-sm-2">
+                <div class="btnSize">
+                    <select class="custom-select custom-select-sm">
+                        <option selected >Select Exam Type</option>
+                        <option *ngFor="let exam of examType" value="exam.value">{{exam.viewValue}}</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-2">
+                <div class="btnSize">
+                    <select class="custom-select custom-select-sm">
+                        <option selected >Select Exam Category</option>
+                        <option *ngFor="let exam of examType" value="exam.value">{{exam.viewValue}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-2">
+                <div class="btnSize">
+                    <select class="custom-select custom-select-sm">
+                        <option selected >Select Subject</option>
+                        <option *ngFor="let sub of subject" value="sub.value">{{sub.viewValue}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-2">
+                <div class="btnSizeTwo">
+                    <select class="custom-select custom-select-sm">
+                        <option selected >Select Tags</option>
+                        <option *ngFor="let tag of tags" value="tag.value">{{tag.viewValue}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-2">
+                <div class="btnSizeThree">
+                    <select class="custom-select custom-select-sm">
+                        <option selected >Select Number Of Questions</option>
+                        <option  *ngFor="let ques of noOfQuestion" value="ques.value">{{ques.viewValue}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-2">
+                <div class="btnSizeFour">
+                    <select class="custom-select custom-select-sm">
+                        <option selected >Total Marks</option>
+                        <option *ngFor="let quesMarks of marks" value="quesMarks.value">{{quesMarks.viewValue}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-2">
+                <div class="btnSize">
+                    <select class="custom-select custom-select-sm">
+                        <option selected >Duration</option>
+                        <option  *ngFor="let dur of duration" value="dur.value">{{dur.viewValue}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-around mx-auto pt-4">
+            <div class="col ml-5">
+                <div class="form-group">
+                    <label for="exam" class="lable">Exam Description</label>
+                    <input type="text" class="form-control inputOne" placeholder="Type Your Exam Description here">
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-around mx-auto pt-2">
+            <div class="col ml-5">
+                <div class="form-group">
+                    <label for="instruction" class="lable">Instruction</label>
+                    <textarea class="form-control inputOne" placeholder="Type Your Instruction here" rows="2" (keyup)="onKeyUp($event)"></textarea>
+                    <div class="float-right">
+                        {{numberOfCharacters1}} / {{maxNumberOfCharacters}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-around  pt-2">
+            <div class="col-lg-4 col-md-2 col-sm-12 mt-2 ml-3">
+                <label for="instruction" class="lable">Questions Source Panel</label>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Filter
+                        </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group has-search col-2 ml-3">
+                        <span class="fa fa-search form-control-feedback ml-3"></span>
+                        <input class="form-control Search ml-3 inputOne" type="search" placeholder="Search" aria-label="Search">
+                    </div>
+
+                    <div class="mainCard ml-3">
+                        <div class="card p-2">
+                            <div class="container-fluid shadow shadow-rounded pt-3" *ngFor='let question of questionsTwo'>
+                                <div class="row">
+                                    <div class="col-md-2 pb-2 pt-2">
+                                        <img src="../../../../../assets/img/diamon.png" class="img-fluid cardImg">
+                                    </div>
+                                    <div class="col-md-10 pb-2 pt-2">
+                                        <p>{{question.value}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-lg-1 col-md-6 col-sm-12 mt-2 ml-3">
+                <div class="pt-5 pb-5 mt-5 buttonSec">
+                    <button type="button" class="btn btn-primary Buttons">ADD &nbsp;&nbsp;<i class="fa fa-caret-right" aria-hidden="true"></i></button><br><br>
+                    <button type="button" class="btn btn-primary Buttons"><i class="fa fa-caret-left" aria-hidden="true"></i>&nbsp;&nbsp;Remove</button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-2 col-sm-12 mt-2 ml-3">
+                <label for="instruction" class="lable">Exam Question Panel</label>
+                <div class="row">
+                    <div class="mainCardTwo ml-3">
+                        <div class="card p-2">
+                            <div class="container-fluid shadow shadow-rounded pt-2" *ngFor='let question of questionsTwo' (click)='openDialog(question)'>
+                                <div class="row">
+                                    <div class="col-md-2 pb-2 pt-2">
+                                        <img src="../../../../../assets/img/diamon.png" class="img-fluid cardImg">
+                                    </div>
+                                    <div class="col-md-10 pb-2 pt-2">
+                                        <p>{{question.value}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <button type="button" class="btn btn-primary float-right mr-3 mb-2" style="background-color: #949597;">Select All</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <button type="button" class="btn btn-primary ButtonsTwo ml-2" (click)='openDialogTwo(questionsTwo)'>Preview</button>
+                    <button type="button" class="btn btn-primary ButtonsTwo ml-4">Save Draft</button>
+                    <button type="button" class="btn btn-primary ButtonsTwo ml-4">Submit</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container-fluid mt-5 ">
+            <div class="row d-flex justify-content-around mx-auto pt-4">
+                <div class="col">
+                    <p class="float-left font-weight-bolder">Exam Questions Panel</p>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mx-auto pt-4 border border-dark exam-questions">
+                <div class="col-lg-10 col-lg-10 col-md-6 col-sm-12 second-card">
+                    <p class="float-left font-weight-bold">Exam Questions</p> <br>
+                    <div class="card mt-3 mb-2 shadow shadow-rounded" *ngFor='let question of questions'>
+                        <div class="row">
+                            <div class="col-lg-1">
+                                <span class="card-image">
+                                    <img src="../../../../../assets/img/diamon.png" alt=""
+                                        style="max-width: 4rem; padding: 5px;">
+                                </span>
+                            </div>
+                            <div class="col-lg-11">
+                                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Dignissimos
+                                    distinctio eaque, fugit exercitationem doloremque earum a eum aspernatur accusamus
+                                    quos
+                                    tenetur quibusdam omnis iste officiis tempore quaerat voluptates excepturi ducimus.
+                                </p> -->
+                                <p class="card-text">{{question.value}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 col-sm-12">
+                    <p class="float-left font-weight-bold">Question Marks</p> <br>
+                    <div class="marks">
+                        <select name="" class="float-left mb-5 SelectBox" *ngFor='let question of questions'>
+                            <option value="volvo">Select Marks</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row float-right"> -->
+            <div class="row float-right mt-3">
+                <div class="col">
+
+                    <label for="selectedMarks">Total Selected Marks</label> &nbsp;
+                    <input type="text" id="selectedMarks" name="selectedMarks"><br><br>
+
+                    <label for="totalMarks" class="ml-4">Total Marks</label> &nbsp;
+                    <input type="text" id="totalMarks" name="totalMarks" class="ml-5">
+                </div>
+            </div>
+            <br><br><br><br><br>
+            <!-- </div> -->
+            <div class="row float-right">
+                <div class="col">
+                    <button type="button" class="btn btn-secondary mr-4" style="background-color: #949597 !important;">Save Draft</button>
+                    <button type="button" class="btn btn-danger" style="background-color: #E7609B !important;">Submit</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

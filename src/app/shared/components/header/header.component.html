@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-light mb-5 bg-white rounded">
+    <button mat-icon-button (click)="toggleSideBar()" class="MainBut">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <a class="navbar-brand Title">EXAMOWL</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item liCol">
+                <a class="nav-link Title">Teacher <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item liCol">
+                <a class="nav-link Title">Exam</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link Title">Create Exam</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <div class="has-search mr-4">
+                <span class="fa fa-search form-control-feedback ml-2"></span>
+                <input class="form-control searchInput mr-sm-2" type="text" placeholder="Search">
+            </div>
+            <div>
+                <img src="../../../../assets/img/teacher.png" alt="Avatar" class="avatar mr-2">
+            </div>
+            <div>
+                <p class="ProfileTit mt-3 mr-2">Kiran Kumar Kumawat</p>
+            </div>
+            <div>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+        </form>
+    </div>
+</nav>
